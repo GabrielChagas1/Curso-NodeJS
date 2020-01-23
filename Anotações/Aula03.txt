@@ -1,0 +1,7 @@
+Comando básicos{
+    # node <nome do arquivo.js>{
+        #interpreta o que tem dentro do arquivo.
+    }
+
+    
+}

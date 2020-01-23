@@ -1,0 +1,15 @@
+aula 04{
+    módulos[
+        # Dividir o seu código em pequenas partes, para facilitar a leitura e manutenção
+
+        Comandos{
+            criando um módulo{
+                #module.exports = soma;
+            }
+
+            carregando um módulo{
+                var soma = require(./<nome do arquivo><não precisa extensão>);
+            }
+        }
+    ]
+}
