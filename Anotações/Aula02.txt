@@ -1,0 +1,15 @@
+aula 02{
+    Como instalar o NodeJS{
+        Site: https://nodejs.org/en/download/
+        # Qual versão instalar{
+            #LTS{
+                #versão estável.
+                #melhor versão para quem for fazer um projeto sério.
+            }
+
+            #Current{
+                #versão mais recente, porém ainda em construção.
+            }
+        }
+    }
+}

@@ -1,0 +1,18 @@
+aula #01{
+    1-)O que é nodeJS{
+        # É um interpretador javascript que não depende do navegador, facilita criação de programas em js sem precisar do navegador.
+        # Criação back-end com javascript.
+    }
+    2-) Bases do nodeJS{
+        V8 -> entendo o js do nodeJS.
+        libuv -> biblioteca que dão caracteristica de uma linguagem back-end ao node{
+            # Conexão com banco de dados.
+        }
+    }
+    3-) Vantagens de usar nodeJS{
+        # Muito leve. pouco uso de memória RAM e aproveita melhor a CPU.
+        # Utiliza javascript.
+        # Maiores ecossistemas de libs, módulos e plugins do mundo.
+        # Suporta um número imenso de requições(467.264 por segundos).
+    }
+}
