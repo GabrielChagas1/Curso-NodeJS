@@ -1,0 +1,25 @@
+aula 05{
+    HTTP{
+        HTTP(Hypertext transfer Protocol){
+            # protocolo que permite que um cliente se comunique com um servidor.
+            manipulando o HTTP no nodeJS{
+
+                //criando uma variável http
+                var http = require('http');
+
+                //abrindo servidor 
+                //listen -> porta que vc quer abrir o servidor
+                http.createServer(function(req, res){
+                    res.end('Olá Mundo');
+                }).listen(8789);
+                
+                
+                console.log('Servidor rodando');
+                
+                //caminho para acessar no navegador
+                localhost:<porta>
+            }
+
+        }
+    }
+}
