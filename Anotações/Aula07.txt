@@ -1,0 +1,24 @@
+aula 07{
+    Rotas{
+
+        #Rota é um caminho para sua aplicação.
+        #função callback, é executada sempre que um evento acontece.
+        #req-> requisicão atual
+        #res-> resposta para o cliente
+
+
+        //módulo do express
+        const express = require("express");
+        //instância do framework express, contêm todos os métodos do express
+        const app = express();   
+        //abrindo servidor
+        //sempre tem que ser a última linha do código
+
+        app.listen(<porta do servidor>, function(req, res){
+            console.log('Servidor Rodando na URL http://localhost:8087');
+        });
+
+
+
+    }
+}
