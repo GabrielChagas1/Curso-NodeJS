@@ -1,0 +1,13 @@
+aula 08{
+    Parâmetros{
+        #send só pode ser chamado uma vez, dentro de uma rota
+
+        #valor dinâmico que usuário consegue passar
+
+        #(:) dois pontos equivale a criar um parâmetro no nodejs
+
+        #req responsável por receber dados de uma requisição 
+
+        #req.params[nome do parâmetro] para recuparar um valor específico
+    }
+}
