@@ -1,0 +1,10 @@
+aula 10{
+    renderizando páginas{
+        #sendFile() -> comando para enviar um arquivo ao acessar a rota.
+        #sendFile(__dirname + <nome do arquivo>).
+
+        #__dirname{
+            retorna o diretório raiz dá aplicação
+        }
+    }
+}
