@@ -1,0 +1,6 @@
+aula 14[
+    deletando registros{
+        # "DELETE FROM <nome tabela> -> toda a tabela vai ser deletada
+        # "DELETE FROM <nome tabela> WHERE <campo> = <valor de condição> -> toda a tabela vai ser deletada
+    }
+]

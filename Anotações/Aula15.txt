@@ -1,0 +1,5 @@
+aula 15{
+    atualizando registros{
+        # "UPDATE <nome tabela> SET <campo> = <valor novo> WHERE <campo> = <condição>" -> atualizar registros.
+    }
+}

@@ -1,0 +1,7 @@
+aula 13{
+    manipulando o mysql{
+        # "INSERT INTO" -> inserir registros no banco
+        # "SELECT * FROM <nome tabela>" -> trazer todos os dados do banco
+        # "SELECT (nome campo) FROM <nome tabela>" -> trazer campos específicos do banco
+    }
+}
