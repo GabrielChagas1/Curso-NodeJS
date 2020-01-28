@@ -1,0 +1,11 @@
+aula 12{
+    como criar tabelas no mysql{
+        comandos{
+            # "show databases" -> mostrar todos os bancos de dados
+            # "create database <nome do banco>" -> criar um banco de dados
+            # "use <nome do banco> -> selecionar um banco de dados existente
+            # "show tables" -> mostrar as tabelas dentro do banco selecionado
+            # "desc <nome da tabela> -> mostrar a estrutura dá tabela
+        }
+    }
+}
