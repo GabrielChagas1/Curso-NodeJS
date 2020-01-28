@@ -1,0 +1,6 @@
+aula 16{
+    Sequelize{
+        #npm install sequelize-cli -g
+        #npm install --save mysql2
+    }
+}
