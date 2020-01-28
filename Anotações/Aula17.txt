@@ -1,0 +1,18 @@
+aula 17{
+    como se conectar no mysql com o sequilize{
+        var Sequelize = require('sequelize');
+
+        //passando as credenciais para conexão
+        var sequelize = new Sequelize('test', 'root', '', {
+            host: 'localhost',
+            dialect: 'mysql'
+        });
+
+        //comando para se autenticar no banco de dados
+        sequelize.authenticate().then(function(){
+            console.log('Conectado com sucesso');
+        }).catch(function(erro){
+            console.log(`Falha ao se conectar ${erro}`) ;
+        });
+    }
+}
