@@ -22,10 +22,10 @@ const Postagem = sequelize.define('Postagens', {
 
 });
 
-// Postagem.create({
-//     titulo: 'ola mundo',
-//     conteudo: 'aprendendo a criar modelos com nodeJS'
-// });
+Postagem.create({
+    titulo: 'ola mundo',
+    conteudo: 'aprendendo a criar modelos com nodeJS'
+});
 
 const Usuario = sequelize.define('Usuarios', {
     nome:{
