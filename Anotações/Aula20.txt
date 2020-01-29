@@ -1,0 +1,5 @@
+aula 20{
+    render{
+         res.render(<nome do arquivo>);
+    }
+}
