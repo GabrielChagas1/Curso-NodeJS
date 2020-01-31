@@ -1,0 +1,5 @@
+aula 23{
+    estruturando banco de dados{
+        comando no arquivo aula 23.
+    }
+}
