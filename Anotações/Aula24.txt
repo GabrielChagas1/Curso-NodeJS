@@ -1,0 +1,16 @@
+aula 24{
+    salvando dados do form{
+         //criando um registro na tabela postagens
+    Post.create({
+        //recuperando os campos
+        titulo: req.body.titulo,
+        conteudo: req.body.conteudo
+    }).then(function(){
+        //se tudo ocorrer bem exibe essa mensagem!
+        res.send("Post criado com sucesso!");
+    }).catch(function(err){
+        //senão retorna com o erro!
+        res.send(`Houve um erro: ${err}`);
+    });
+    }
+}

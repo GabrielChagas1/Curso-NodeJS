@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const handlebars = require('express-handlebars');
 const bodyParser = require('body-parser');
+const Post = require('./models/Post');
 
 //config
 //template Engine
@@ -17,9 +18,21 @@ app.get('/cad', function(req, res){
     res.render('formulario');
 });
 
+app.get('/', function(req, res){
+    res.render('home');
+})
+
 app.post('/add', function(req, res){
-    //form de cadastrar postagens
-    res.send(`Título: ${req.body.titulo} e Texto: ${req.body.conteudo}`)
+    //criando um registro na tabela postagens
+    Post.create({
+        titulo: req.body.titulo,
+        conteudo: req.body.conteudo
+    }).then(function(){
+        // res.send("Post criado com sucesso!");
+        res.redirect('/');
+    }).catch(function(err){
+        res.send(`Houve um erro: ${err}`);
+    });
 });
 
 app.listen(8087, function(){

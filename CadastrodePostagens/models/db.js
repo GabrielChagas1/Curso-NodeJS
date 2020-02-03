@@ -1,5 +1,5 @@
 const Sequilize = require('sequelize');
-const sequelize = new Sequilize('postapp', 'root', 'root', {
+const sequelize = new Sequilize('postapp', 'root', '', {
     host: 'localhost',
     dialect: 'mysql'
 });
