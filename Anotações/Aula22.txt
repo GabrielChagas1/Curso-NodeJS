@@ -1,0 +1,12 @@
+aula 22{
+    body parser{
+        configuração{
+            //Body Parser
+            app.use(bodyParser.urlencoded({extended: false}));
+            app.use(bodyParser.json());
+        }
+        recuperar valores{
+            req.body.<nome do campo html>
+        }
+    }
+}

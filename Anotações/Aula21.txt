@@ -1,0 +1,7 @@
+aula 21{
+    enviar dados do form{
+        #action POST(não visivel ao usuário) ou GET(através da url)
+
+        #só consegue acessar rotas get pelo navegador
+    }
+}
