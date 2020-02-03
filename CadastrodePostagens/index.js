@@ -11,7 +11,7 @@ app.engine('handlebars', handlebars({
     defaultLayout: 'main',
     helpers: {
         formatDate: (date) => {
-            return moment(date).format('DD/MM/YYYY')
+            return moment(date).format('DD/MM/YYYY');
         }
     }
 }));
@@ -22,6 +22,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
 // Rotas
+// Sequelize
 app.get('/cad', function(req, res){
     res.render('formulario');
 });
@@ -42,6 +43,14 @@ app.post('/add', function(req, res){
         res.redirect('/');
     }).catch(function(err){
         res.send(`Houve um erro: ${err}`);
+    });
+});
+
+app.get('/deletar/:id', function(req, res){
+    Post.destroy({where:{'id': req.params.id}}).then(function(){
+        res.send('Excluído com sucesso')
+    }).catch(function(err){
+        res.send('Está posatagem não existe');
     });
 });
 
