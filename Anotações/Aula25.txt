@@ -1,0 +1,9 @@
+aula 25{
+    listando os registros{
+        //lista todos os posts
+        <Nome model>.all();
+
+        DESC //descrescente
+        ASC //crescente
+    }
+}

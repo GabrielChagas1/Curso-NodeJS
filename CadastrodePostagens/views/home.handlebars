@@ -1,1 +1,8 @@
 <h1>Lista de post</h1>
+
+{{#each posts}}
+    <small>{{#formatDate dataValues.createdAt}}{{/formatDate}}</small>
+    <h3>{{dataValues.titulo}}</h3>
+    <h3>{{dataValues.conteudo}}</h3>
+    <hr>
+{{/each}}

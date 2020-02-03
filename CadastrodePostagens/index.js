@@ -2,11 +2,19 @@ const express = require('express');
 const app = express();
 const handlebars = require('express-handlebars');
 const bodyParser = require('body-parser');
+const moment = require('moment');
 const Post = require('./models/Post');
 
 //config
 //template Engine
-app.engine('handlebars', handlebars({defaultLayout: 'main'}));
+app.engine('handlebars', handlebars({
+    defaultLayout: 'main',
+    helpers: {
+        formatDate: (date) => {
+            return moment(date).format('DD/MM/YYYY')
+        }
+    }
+}));
 app.set('view engine', 'handlebars');//Conexão com banco de dados
 
 //Body Parser
@@ -19,7 +27,9 @@ app.get('/cad', function(req, res){
 });
 
 app.get('/', function(req, res){
-    res.render('home');
+        Post.findAll({order: [['id', 'DESC']]}).then(function(posts){
+        res.render('home', {posts: posts});
+    }); 
 })
 
 app.post('/add', function(req, res){
