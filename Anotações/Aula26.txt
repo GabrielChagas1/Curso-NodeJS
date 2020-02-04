@@ -1,0 +1,9 @@
+aula {
+    deletando registros{
+         Post.destroy({where:{'id': req.params.id}}).then(function(){
+            res.send('Excluído com sucesso')
+        }).catch(function(err){
+            res.send('Está posatagem não existe');
+        });
+    }
+}

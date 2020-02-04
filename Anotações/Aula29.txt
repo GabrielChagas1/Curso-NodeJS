@@ -1,0 +1,16 @@
+aula 29{
+    iniciando com o mongoose{
+        #ODM (object data mapping);
+
+        #npm install --save mongoose -> comando para instalar
+
+        #não precisa criar o banco antes, o próprio mongo já cria se não existir o mesmo.
+
+        #conectar no banco de dados
+        mongoose.connect('mongodb://<servidor>/<nome banco>').then(() => {
+            console.log('Conectado ao MongoDB');
+        }).cathch((err) =>{
+            console.log(`Houve um erro ao conectar no mongoDB: ${err}`);
+        });
+    }
+}
