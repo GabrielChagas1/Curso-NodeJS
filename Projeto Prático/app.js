@@ -1,9 +1,11 @@
 // Carregando módulos
 const express = require('express');
 const app = express();
-const hadlebars = require('express-handlebars');
+const handlebars = require('express-handlebars');
 const bodyParser = require('body-parser');
 // const mongoose = require('mongoose');
+
+const admin = require('./routes/admin');
 
 // Configurações
     // Body Parser
@@ -18,6 +20,8 @@ const bodyParser = require('body-parser');
     // EM BREVE
 
 // Rotas
+app.use('/admin', admin);
+
 
 // Configurando Servidor
 const port = 8007;
