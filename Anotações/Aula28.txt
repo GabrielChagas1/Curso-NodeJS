@@ -1,0 +1,11 @@
+aula 28{
+    instalando o mongoDB{
+        #https://www.mongodb.com/
+
+        #mongo compass -> ajuda a mexer com o mongo sem precisar da linha de comando.
+
+        #mongod -> ligar servidor mongoDB
+
+        #mongo -> acessar as collections no mongoDB
+    }
+}

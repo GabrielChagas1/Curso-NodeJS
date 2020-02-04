@@ -1,0 +1,8 @@
+aula 26{
+    introdução ao mongoDB{
+        #não existem tabelas dentro do mongoDB
+        #cada dado é salvo dentro de um documento
+
+        #utilizado o JSON
+    }
+}
