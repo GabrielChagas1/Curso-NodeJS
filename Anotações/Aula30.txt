@@ -1,0 +1,23 @@
+aula 30 {
+    trabalhando com o mongoose{
+        models{
+            #usar sempre o "Schema" após o nome do model
+
+            const UserSchema = mongoose.Schema({
+                <nome campo>: {
+                    type: String, -> tipo do campo
+                    require: true -> obrigatório ou não
+                },
+            });
+
+            //vincular esse model a um Schema
+            mongoose.model('usuarios', UserSchema);
+        }
+
+        objetos{
+            new UserSchema({
+                <nome campo>: <valor campo>,
+            }).save();
+        }
+    }
+}
