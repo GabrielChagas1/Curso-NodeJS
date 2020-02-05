@@ -44,7 +44,7 @@ const admin = require('./routes/admin');
     // Middleware
     app.use((req, res, next) =>{
         // Mensagens de sucesso e falhas
-        res.locals.success_msg = req.flash('succes-msg');
+        res.locals.success_msg = req.flash('success_msg');
         res.locals.error_msg = req.flash('error_msg');
         next();
     });
@@ -58,5 +58,5 @@ app.use('/admin', admin);
 // Configurando Servidor
 const port = 8007;
 app.listen(port, () =>{
-    console.log('Servidor Ativo');
+    console.log('Servidor Ativo na porta 8007');
 });
