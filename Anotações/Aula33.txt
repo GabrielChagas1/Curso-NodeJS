@@ -1,7 +1,7 @@
 aula 33{
-    criando rotas da aplicação{
-        #app.use('/admin', admin);{
-            serve para vincular as rotas criadas no arquivo admin a URL '/admin'
-        }
+    Arquivos estáticos{
+        #arquivos css, js, imagens.
+
+        #criar pasta public e add os arquivos externos lá dentro.
     }
 }

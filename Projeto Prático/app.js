@@ -3,6 +3,7 @@ const express = require('express');
 const app = express();
 const handlebars = require('express-handlebars');
 const bodyParser = require('body-parser');
+const path = require('path');
 // const mongoose = require('mongoose');
 
 const admin = require('./routes/admin');
@@ -18,6 +19,9 @@ const admin = require('./routes/admin');
 
     // Mongoose
     // EM BREVE
+
+    // Public 
+    app.use(express.static(path.join(__dirname, 'public')));
 
 // Rotas
 app.use('/admin', admin);
