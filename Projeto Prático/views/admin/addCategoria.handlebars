@@ -1,0 +1,15 @@
+<div class="card mt-4 shadow">
+    <div class="card-header">
+        <h2 class="text-center">Cadastrar Categoria</h2>
+    </div>
+    <div class="card-body">
+        <form action="/admin/categoria/adicionar" method="POST">
+            <label for="nome">Nome: </label>
+            <input class="form-control" type="" id="nome" name="nome" placeholder="Nome da categoria" required="required">
+            <label for="slug">Slug: </label>
+            <input class="form-control" type="text" id="slug" name="slug" placeholder="Slug da categoria">
+            <br>
+            <button type="submit" class="btn btn-success btn-block">Cadastrar</button>
+        </form>
+    </div>
+</div>
