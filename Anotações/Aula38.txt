@@ -1,0 +1,5 @@
+aula 38{
+    middlewares{
+        #monitora qualquer requisição que o usuário fizer ao servidor, manipular requisições antes de chegar no destino.
+    }
+}
