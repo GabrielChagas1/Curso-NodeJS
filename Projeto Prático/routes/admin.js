@@ -16,7 +16,13 @@ router.get('/posts', (req, res) =>{
 
 // rota para visualizar as categorias
 router.get('/categorias', (req, res) =>{
-    res.render('admin/categorias');
+    Categoria.find().then((categorias) =>{
+        console.log(categorias);
+        res.render('admin/categorias', {categorias: categorias});
+    }).catch((err) =>{
+        req.flash('error_msg', 'Houve um erro ao listar categorias');
+        res.redirect('/admin');
+    });
 });
 
 // rota para cadastrar uma categoria
