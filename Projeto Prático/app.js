@@ -5,7 +5,10 @@ const handlebars = require('express-handlebars');
 const bodyParser = require('body-parser');
 const path = require('path');
 const mongoose = require('mongoose');
+const session = require('express-session');
+const flash = require('connect-flash');
 
+// Routes 
 const admin = require('./routes/admin');
 
 // Configurações
@@ -28,6 +31,26 @@ const admin = require('./routes/admin');
     // Public 
     app.use(express.static(path.join(__dirname, 'public')));
 
+    // Sessão
+    app.use(session({
+        secret: 'cursodenode', 
+        resave: true,
+        saveUninitialized: true
+    }));
+
+    // Flahs
+    app.use(flash());
+
+    // Middleware
+    app.use((req, res, next) =>{
+        // Mensagens de sucesso e falhas
+        res.locals.success_msg = req.flash('success_msg');
+        res.locals.error_msg = req.flash('error_msg');
+        next();
+    });
+
+
+
 // Rotas
 app.use('/admin', admin);
 
@@ -35,5 +58,5 @@ app.use('/admin', admin);
 // Configurando Servidor
 const port = 8007;
 app.listen(port, () =>{
-    console.log('Servidor Ativo');
+    console.log('Servidor Ativo na porta 8007');
 });

@@ -1,3 +1,7 @@
+{{#each erros}}
+    <div class="alert alert-danger mt-4">{{texto}}</div>
+    {{else}}
+{{/each}}
 <div class="card mt-4 shadow">
     <div class="card-header">
         <h2 class="text-center">Cadastrar Categoria</h2>
@@ -5,7 +9,7 @@
     <div class="card-body">
         <form action="/admin/categoria/add" method="POST">
             <label for="nome">Nome: </label>
-            <input class="form-control" type="" id="nome" name="nome" placeholder="Nome da categoria" required="required">
+            <input class="form-control" type="" id="nome" name="nome" placeholder="Nome da categoria">
             <label for="slug">Slug: </label>
             <input class="form-control" type="text" id="slug" name="slug" placeholder="Slug da categoria">
             <br>
