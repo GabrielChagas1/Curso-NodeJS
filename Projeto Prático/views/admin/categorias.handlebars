@@ -1,3 +1,23 @@
 <h2 class="text-center mt-4">Lista de categorias:</h2>
 <hr>
 <a href="/admin/categorias/add"><button class="btn btn-primary">Nova Categoria</button></a>
+
+<div class="row mb-5">
+    {{#each categorias}}
+        <div class="col-md-4">
+            <div class="card mt-4 shadow-sm">
+                <img src="/img/card.jpg" alt="Card Imagem" class="card-img">
+                <div class="card-body">
+                    <h2>{{nome}}</h2>
+                    <br>
+                    <h6 class="card-subtitle mb-2 text-muted">Slug: {{slug}}</h6>
+                </div>
+                <div class="card-footer float-right text-muted d-flex justify-content-between bg-transparent border-top-0">
+                    <div class="views"><i class="fa fa-calendar"></i> {{#formatDate date}}{{/formatDate}}</div>
+                </div>
+            </div>
+        </div>
+    {{else}}
+</div>
+
+{{/each}}
