@@ -17,7 +17,7 @@ router.get('/posts', (req, res) =>{
 // rota para visualizar as categorias
 router.get('/categorias', (req, res) =>{
     Categoria.find().lean().then((categorias) => {
-        console.log(categorias);
+        // console.log(categorias);
         res.render('admin/categorias', {categorias : categorias});
     }).catch((err) =>{
         req.flash('error_msg', 'Houve um erro ao listar as categorias');
@@ -30,7 +30,7 @@ router.get('/categorias/add', (req, res) =>{
     res.render('admin/addCategoria');
 });
 
-// post para cadastrar um post novo
+// post para cadastrar uma categoria nova
 router.post('/categoria/add', (req, res) =>{
 
     var err = [];
@@ -59,6 +59,37 @@ router.post('/categoria/add', (req, res) =>{
         });
     }
 });
+
+//route para recuperar uma categoria
+//params para parametros e não form
+router.get('/categorias/edit/:id', (req, res) =>{
+    Categoria.findOne({_id: req.params.id}).then((categoria) =>{
+        res.render('admin/editCategoria', {categoria: categoria});
+    }).catch((err) =>{
+        req.flash('error_msg', 'Esta categoria não existe');
+        res.redirect('/admin/categorias');
+    });
+});
+
+// route para editar uma categoria
+router.post('/categoria/edit', (req, res) =>{
+    Categoria.findOne({_id: req.body.id}).then((categoria) =>{
+        categoria.nome = req.body.nome;
+        categoria.slug = req.body.slug;
+
+        categoria.save().then(() =>{
+            req.flash('success_msg', 'Categoria editada com sucesso!');
+            res.redirect('/admin/categorias');
+        }).catch((err) =>{
+            req.flash('error_msg', 'Houve um erro ao salvar a categoria');
+            res.redirect('/admin/categorias');
+        });
+
+    }).catch((err) =>{
+        req.flash('error_msg', 'Houve um erro ao editar esta categoria');
+        res.redirect('/admin/categorias');
+    });
+})
 
 
 
