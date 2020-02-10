@@ -1,0 +1,32 @@
+<h2 class="text-center mt-4">Lista de postagens:</h2>
+<a href="/admin/postagens/add"><button class="btn btn-primary">Nova Postagem</button></a>
+<hr>
+
+{{#if postagens }}
+    <div class="row mb-5">
+        {{#each postagens}}
+            <div class="col-md-4">
+                <div class="card mt-4 shadow-sm">
+                    <img src="/img/card.jpg" alt="Card Imagem" class="card-img">
+                    <div class="card-body">
+                        <h2>{{nome}}</h2>
+                        <br>
+                        <h6 class="card-subtitle mb-2 text-muted">Slug: {{slug}}</h6>
+                        <br>
+                        <a href="/admin/postagens/edit/{{_id}}"><button class="btn btn-primary">Editar postagem</button></a>
+                        <form action="/admin/postagens/deletar" method="POST">
+                            <input type="hidden" name="id" value="{{_id}}">
+                            <button class="btn btn-danger mt-2" type="submit">Deletar postagem</button>
+                        </form>
+                    </div>
+                    <div class="card-footer float-right text-muted d-flex justify-content-between bg-transparent border-top-0">
+                        <div class="views"><i class="fa fa-calendar"></i> {{#formatDate date}}{{/formatDate}}</div>
+                    </div>
+                </div>
+            </div>
+        {{/each}}
+    </div>
+    {{else}}
+        <div><h4 class="mt-3 text-center">Nenhuma postagem resgistrada</h4></div>
+
+{{/if}}

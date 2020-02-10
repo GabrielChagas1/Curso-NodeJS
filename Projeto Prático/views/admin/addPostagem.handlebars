@@ -1,0 +1,31 @@
+{{#each erros}}
+    <div class="alert alert-danger mt-4">{{texto}}</div>
+    {{else}}
+{{/each}}
+<div class="card mt-4 shadow">
+    <div class="card-header">
+        <h2 class="text-center">Cadastrar Postagem</h2>
+    </div>
+    <div class="card-body">
+        <form action="/admin/postagem/add" method="POST">
+            <label for="nome">Título: </label>
+            <input class="form-control" type="" id="titulo" name="titulo" placeholder="Título da categoria">
+            <br>
+            <label for="slug">Slug: </label>
+            <input class="form-control" type="text" id="slug" name="slug" placeholder="Slug da categoria">
+            <br>
+            <label for="categorias">Categoria: </label>
+            <select class="form-control" name="categoria">
+                <option selected disabled value="0">Escolha uma categoria</option>
+            {{#each categorias}}
+                <option value="{{_id}}">{{nome}}</option>
+            {{/each}}
+            </select>
+            <br>
+            <label for="slug">Descrição: </label>
+            <textarea class="form-control" id="descricao" name="descricao" placeholder="Descrição da postagem" rows="5"></textarea>
+            <br>
+            <button type="submit" class="btn btn-success btn-block">Cadastrar</button>
+        </form>
+    </div>
+</div>

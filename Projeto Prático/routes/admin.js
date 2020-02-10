@@ -123,6 +123,20 @@ router.post('/categorias/deletar', (req, res) => {
     });
 });
 
+// Routes para postagens
+router.get('/postagens', (req, res) =>{
+    res.render('admin/postagens')
+});
+
+// route para redenrizar a página de edição de postagens
+router.get('/postagens/add', (req, res) =>{
+    var categorias = Categoria.find().lean().then((categorias) =>{
+        res.render('admin/addPostagem', {categorias: categorias});
+    }).catch((err) =>{
+        req.flash('error_msg', 'Houve um erro ao trazer as categorias').
+        res.redirect('admin/postagens');
+    });
+});
 
 
 module.exports = router;
