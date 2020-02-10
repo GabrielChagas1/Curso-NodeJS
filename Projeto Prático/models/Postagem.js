@@ -14,11 +14,19 @@ const Postagem = new Schema({
         type: String,
         required: true
    },
+   conteudo:{
+        type: String,
+        required: true
+    },
    categoria:{
        type: Schema.Types.ObjectId,
        ref: 'categorias',
        required: true
    },
+   img:{
+    type: String,
+    required: true,
+},
    data:{
        type: Date,
        default: Date.now()

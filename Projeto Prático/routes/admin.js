@@ -1,8 +1,12 @@
 const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
+const multer = require('multer');
+const path = require('path');
 require('../models/Categoria');
+require('../models/Postagem');
 const Categoria = mongoose.model('categorias');
+const Postagem = mongoose.model('postagens');
 
 // rota inicial
 router.get('/', (req, res) =>{
@@ -136,6 +140,47 @@ router.get('/postagens/add', (req, res) =>{
         req.flash('error_msg', 'Houve um erro ao trazer as categorias').
         res.redirect('admin/postagens');
     });
+});
+
+
+const storage = multer.diskStorage({
+    destination: function(req, file, cb){
+        cb(null, './public/img/postagens');
+    },
+    filename: function(req, file, cb){
+        cb(null, Date.now()+'-'+ file.originalname);
+    }
+});
+
+const upload = multer({storage});
+
+// route para add no banco
+router.post('/postagens/add', upload.single('file'), (req, res) =>{
+    if(req.body.categoria == '0'){
+        erros.push({texto: 'Categoria inválida, registrar outra categoria'});
+    }
+    var erros = [];
+
+    if(erros.length > 0){
+        res.render('admin/addPostagem', {erros: erros});
+    }else{
+        const newPostagem = {
+            titulo: req.body.titulo,
+            descricao: req.body.descricao,
+            conteudo: req.body.conteudo,
+            categoria: req.body.categoria,
+            slug: req.body.slug, 
+            img: req.file.path.replace('public', '')
+        }
+
+        new Postagem(newPostagem).save().then(() =>{
+            req.flash('succes_img', 'Postagem criado com sucesso"');
+            res.redirect('/admin/postagens');
+        }).catch((err) =>{
+            req.flash('error_msg', 'Houve um erro durante o cadastro da postagem' + err);
+            res.redirect('/admin/postagens');
+        });
+    }
 });
 
 

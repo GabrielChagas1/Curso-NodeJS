@@ -7,12 +7,15 @@
         <h2 class="text-center">Cadastrar Postagem</h2>
     </div>
     <div class="card-body">
-        <form action="/admin/postagem/add" method="POST">
+        <form action="/admin/postagens/add" method="POST" enctype="multipart/form-data">
             <label for="nome">Título: </label>
-            <input class="form-control" type="" id="titulo" name="titulo" placeholder="Título da categoria">
+            <input class="form-control" type="text" id="titulo" name="titulo" placeholder="Título da postagem">
+            <br>
+            <label for="nome">Descrição: </label>
+            <input class="form-control" type="text" id="descricao" name="descricao" placeholder="Descrição da postagem">
             <br>
             <label for="slug">Slug: </label>
-            <input class="form-control" type="text" id="slug" name="slug" placeholder="Slug da categoria">
+            <input class="form-control" type="text" id="slug" name="slug" placeholder="Slug da postagem">
             <br>
             <label for="categorias">Categoria: </label>
             <select class="form-control" name="categoria">
@@ -22,8 +25,11 @@
             {{/each}}
             </select>
             <br>
-            <label for="slug">Descrição: </label>
-            <textarea class="form-control" id="descricao" name="descricao" placeholder="Descrição da postagem" rows="5"></textarea>
+            <label for="conteudo">Conteudo: </label>
+            <textarea class="form-control" id="descricao" name="conteudo" placeholder="Descrição da postagem" rows="5"></textarea>
+            <br>
+            <label for="exampleFormControlFile1">Upload de uma foto</label>
+            <input type="file" name="file" class="form-control-file">
             <br>
             <button type="submit" class="btn btn-success btn-block">Cadastrar</button>
         </form>
