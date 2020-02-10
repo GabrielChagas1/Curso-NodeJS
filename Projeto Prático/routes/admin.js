@@ -129,9 +129,13 @@ router.post('/categorias/deletar', (req, res) => {
 
 // Routes para postagens
 router.get('/postagens', (req, res) =>{
-    Postagem.find().lean().then((postagens) => {
+    Postagem.find().populate('categoria').sort({data:'desc'}).then((postagens) =>{
         res.render('admin/postagens', {postagens : postagens});
-    })
+
+    }).catch((req, res) => {
+        req.flash('error_msg', 'Houve um erro ao listar as postagens');
+        res.redirect('/admin/postagens');
+    });
 });
 
 // route para redenrizar a página de edição de postagens

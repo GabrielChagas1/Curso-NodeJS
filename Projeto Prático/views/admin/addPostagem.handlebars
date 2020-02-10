@@ -14,9 +14,6 @@
             <label for="nome">Descrição: </label>
             <input class="form-control" type="text" id="descricao" name="descricao" placeholder="Descrição da postagem">
             <br>
-            <label for="slug">Slug: </label>
-            <input class="form-control" type="text" id="slug" name="slug" placeholder="Slug da postagem">
-            <br>
             <label for="categorias">Categoria: </label>
             <select class="form-control" name="categoria">
                 <option selected disabled value="0">Escolha uma categoria</option>
@@ -25,11 +22,14 @@
             {{/each}}
             </select>
             <br>
+             <label for="slug">Slug: </label>
+            <input class="form-control" type="text" id="slug" name="slug" placeholder="Slug da postagem">
+            <br>
             <label for="conteudo">Conteudo: </label>
             <textarea class="form-control" id="descricao" name="conteudo" placeholder="Descrição da postagem" rows="5"></textarea>
             <br>
-            <label for="exampleFormControlFile1">Upload de uma foto</label>
-            <input type="file" name="file" class="form-control-file">
+            <label for="exampleFormControlFile1">Imagem:</label>
+            <input type="file" name="file" class="dropify">
             <br>
             <button type="submit" class="btn btn-success btn-block">Cadastrar</button>
         </form>
