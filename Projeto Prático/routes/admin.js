@@ -129,7 +129,9 @@ router.post('/categorias/deletar', (req, res) => {
 
 // Routes para postagens
 router.get('/postagens', (req, res) =>{
-    res.render('admin/postagens')
+    Postagem.find().lean().then((postagens) => {
+        res.render('admin/postagens', {postagens : postagens});
+    })
 });
 
 // route para redenrizar a página de edição de postagens

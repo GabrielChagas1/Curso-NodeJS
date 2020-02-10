@@ -7,17 +7,24 @@
         {{#each postagens}}
             <div class="col-md-4">
                 <div class="card mt-4 shadow-sm">
-                    <img src="/img/card.jpg" alt="Card Imagem" class="card-img">
+                    <img src="{{img}}" alt="Card Imagem" class="card-img">
                     <div class="card-body">
-                        <h2>{{nome}}</h2>
+                        <h2>{{titulo}}</h2>
                         <br>
-                        <h6 class="card-subtitle mb-2 text-muted">Slug: {{slug}}</h6>
+                        <h4 class="card-subtitle mb-2 text-muted">{{descricao}}</h4>
                         <br>
-                        <a href="/admin/postagens/edit/{{_id}}"><button class="btn btn-primary">Editar postagem</button></a>
-                        <form action="/admin/postagens/deletar" method="POST">
-                            <input type="hidden" name="id" value="{{_id}}">
-                            <button class="btn btn-danger mt-2" type="submit">Deletar postagem</button>
-                        </form>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <a href="/admin/postagens/edit/{{_id}}">
+                                    <button class="btn btn-primary btn-block">Editar</button>
+                                </a>
+                            </div>
+                            <div class="col-md-6">
+                                <a href="/admin/postagens/delete/{{_id}}">
+                                    <button class="btn btn-danger btn-block">Deletar</button>
+                                </a>
+                            </div>
+                        </div>
                     </div>
                     <div class="card-footer float-right text-muted d-flex justify-content-between bg-transparent border-top-0">
                         <div class="views"><i class="fa fa-calendar"></i> {{#formatDate date}}{{/formatDate}}</div>
