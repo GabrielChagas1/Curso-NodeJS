@@ -183,10 +183,25 @@ router.post('/postagens/add', upload.single('file'), (req, res) =>{
             req.flash('succes_img', 'Postagem criado com sucesso"');
             res.redirect('/admin/postagens');
         }).catch((err) =>{
-            req.flash('error_msg', 'Houve um erro durante o cadastro da postagem' + err);
+            req.flash('error_msg', 'Houve um erro durante o cadastro da postagem.');
             res.redirect('/admin/postagens');
         });
     }
+});
+
+// route para chamar a página de editar postagem
+router.get('/postagens/edit/:id', (req, res) =>{
+    Postagem.findOne({_id: req.params.id}).then((postagem) =>{
+        Categoria.find().then((categorias) =>{
+            res.render('admin/editPostagem', {categorias: categorias, postagem: postagem});
+        }).catch(function(){
+            req.flash('error_msg', 'Houve ao trazer as categorias.');
+            res.redirect('/admin/postagens');
+        });
+    }).catch(function(){
+        req.flash('error_msg', 'Houve ao trazer a postagem.');
+        res.redirect('/admin/postagens');
+    });
 });
 
 

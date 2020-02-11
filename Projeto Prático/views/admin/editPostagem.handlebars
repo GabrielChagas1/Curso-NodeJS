@@ -1,0 +1,54 @@
+{{#each erros}}
+    <div class="alert alert-danger mt-4">{{texto}}</div>
+    {{else}}
+{{/each}}
+<div class="card mt-4 shadow">
+    <div class="card-header">
+        <h2 class="text-center">Editar Postagem</h2>
+    </div>
+    <div class="card-body">
+        <form action="/admin/postagens/edit" method="POST" enctype="multipart/form-data">
+            <label for="nome">Título: </label>
+            <input class="form-control" type="text" id="titulo" name="titulo" placeholder="Título da postagem" value="{{postagem.titulo}}">
+            <br>
+            <label for="nome">Descrição: </label>
+            <input class="form-control" type="text" id="descricao" name="descricao" placeholder="Descrição da postagem" value="{{postagem.descricao}}">
+            <br>
+            <label for="categorias">Categoria: </label>
+            <select class="form-control" name="categoria">
+                <option selected disabled value="0">Escolha uma categoria</option>
+            {{#each categorias}}
+                    <option value="{{_id}}">{{nome}}</option>
+            {{/each}}
+            </select>
+            <br>
+             <label for="slug">Slug: </label>
+            <input class="form-control" type="text" id="slug" name="slug" placeholder="Slug da postagem" value="{{postagem.slug}}">
+            <br>
+            <label for="conteudo">Conteudo: </label>
+            <textarea class="form-control" id="descricao" name="conteudo" placeholder="Descrição da postagem" rows="5">{{postagem.conteudo}}</textarea>
+            <br>
+            <label for="exampleFormControlFile1">Imagem:</label>
+            <input type="file" name="file" class="dropify" data-default-file="{{postagem.img}}">
+            <br>
+            <button type="submit" class="btn btn-success btn-block">Cadastrar</button>
+        </form>
+    </div>
+</div>
+
+
+<script>
+    function atualizaSel(){
+        var categoria = document.getElementById("categoria")
+        var option1 = document.getElementsByTagName("option")
+        var id_sel = "{{postagem.categoria._id}}"
+
+        for(var i=0; i<option1.length; i++){
+            if(option1[i].value == id_sel){
+                option1[i].setAttribute("selected", "true")
+            }
+        }
+    }
+atualizaSel()
+</script>
+

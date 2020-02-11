@@ -1,6 +1,5 @@
 $(document).ready(() =>{
     // iniciando o plugin dropify
-    // $('.dropify').dropify();
     $('.dropify').dropify({
         messages: {
             'default': 'Arraste e solte um arquivo ou clique aqui',
