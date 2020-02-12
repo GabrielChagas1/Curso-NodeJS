@@ -7,7 +7,8 @@
         <h2 class="text-center">Editar Postagem</h2>
     </div>
     <div class="card-body">
-        <form action="/admin/postagens/edit" method="POST" enctype="multipart/form-data">
+        <form action="/admin/postagem/edit" method="POST" enctype="multipart/form-data">
+            <input type="hidden" name="id" value="{{postagem._id}}">
             <label for="nome">Título: </label>
             <input class="form-control" type="text" id="titulo" name="titulo" placeholder="Título da postagem" value="{{postagem.titulo}}">
             <br>
@@ -30,6 +31,7 @@
             <br>
             <label for="exampleFormControlFile1">Imagem:</label>
             <input type="file" name="file" class="dropify" data-default-file="{{postagem.img}}">
+            <input type="hidden" name="fileCurrent" value="{{postagem.img}}">
             <br>
             <button type="submit" class="btn btn-success btn-block">Cadastrar</button>
         </form>

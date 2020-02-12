@@ -148,7 +148,7 @@ router.get('/postagens/add', (req, res) =>{
     });
 });
 
-
+// biblioteca multer para upload de imagens
 const storage = multer.diskStorage({
     destination: function(req, file, cb){
         cb(null, './public/img/postagens');
@@ -203,6 +203,45 @@ router.get('/postagens/edit/:id', (req, res) =>{
         res.redirect('/admin/postagens');
     });
 });
+// route para editar uma categoria
+router.post('/postagem/edit', upload.single('file'), (req, res) =>{
+    let img = '';
 
+    if(!req.file){
+        img = req.body.fileCurrent;
+    }else{
+        img = req.file.path.replace('public', '');
+    }
+    
+    if(req.body.categoria == '0'){
+        erros.push({texto: 'Categoria inválida, registrar outra categoria'});
+    }
+    var erros = [];
+
+    if(erros.length > 0){
+        res.render('admin/addPostagem', {erros: erros});
+    }else{
+        Postagem.findOne({_id: req.body.id}).then((postagem) =>{
+            postagem.titulo =  req.body.titulo,
+            postagem.descricao = req.body.descricao,
+            postagem.conteudo = req.body.conteudo,
+            postagem.categoria = req.body.categoria,
+            postagem.slug = req.body.slug, 
+            postagem.img = img
+
+            postagem.save().then(() =>{
+                req.flash('success_msg', 'Postagem editada com sucesso!');
+                res.redirect('/admin/postagens');
+            }).catch((err) =>{
+                req.flash('error_msg', 'Houve um erro durante a edição da postagem.' + err);
+                res.redirect('/admin/postagens');
+            });
+
+        }).catch((err) =>{
+            req.flash('error_msg', 'Houve um erro durante a edição da postagem.' + err);
+            res.redirect('/admin/postagens');
+        });
+    }
+});
 
 module.exports = router;
