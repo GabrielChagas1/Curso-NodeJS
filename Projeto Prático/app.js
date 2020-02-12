@@ -46,7 +46,7 @@ const admin = require('./routes/admin');
         saveUninitialized: true
     }));
 
-    // Flahs
+    // Flash
     app.use(flash());
 
     // Middleware

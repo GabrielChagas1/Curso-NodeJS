@@ -180,7 +180,7 @@ router.post('/postagens/add', upload.single('file'), (req, res) =>{
         }
 
         new Postagem(newPostagem).save().then(() =>{
-            req.flash('succes_img', 'Postagem criado com sucesso"');
+            req.flash('success_msg', 'Postagem criado com sucesso');
             res.redirect('/admin/postagens');
         }).catch((err) =>{
             req.flash('error_msg', 'Houve um erro durante o cadastro da postagem.');
@@ -242,6 +242,17 @@ router.post('/postagem/edit', upload.single('file'), (req, res) =>{
             res.redirect('/admin/postagens');
         });
     }
+});
+
+// route para deletar postagens
+router.get('/postagem/delete/:id', (req, res) =>{
+    Postagem.deleteOne({_id: req.params.id}).then(() =>{
+        req.flash('success_msg', 'Postagem deletada com sucesso!');
+        res.redirect('/admin/postagens');
+    }).catch((err) =>{
+        req.flash('error_msg', 'Houve um erro interno');
+        res.redirect('/admin/postagens')
+    })
 });
 
 module.exports = router;
