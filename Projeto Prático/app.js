@@ -8,6 +8,8 @@ const mongoose = require('mongoose');
 const session = require('express-session');
 const flash = require('connect-flash');
 const moment = require('moment');
+require('./models/Postagem');
+const Postagem = mongoose.model('postagens');
 
 // Routes 
 const admin = require('./routes/admin');
@@ -56,6 +58,20 @@ const admin = require('./routes/admin');
         res.locals.error_msg = req.flash('error_msg');
         next();
     });
+
+// Routes
+app.get('/', (req, res) =>{
+    Postagem.find().populate('categoria').sort({data: 'desc'}).then((postagens) =>{
+        res.render('index', {postagens: postagens});
+    }).catch((err) =>{
+        res.flash('error_msg', 'Erro ao trazer as postagens');
+        res.redirect('/404');
+    })
+});
+
+app.get('/404', (req, res) =>{
+    res.send('erro 404');
+});
 
 
 

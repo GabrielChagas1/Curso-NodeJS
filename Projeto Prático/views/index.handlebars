@@ -1,0 +1,44 @@
+<div class="jumbotron shadow-sm mt-4">
+  <h1 class="display-4">Bem-vindo ao Blog do Node!</h1>
+  <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+  <hr class="my-4">
+  <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+  <p class="lead">
+    <a class="btn btn-primary btn-lg" href="#" role="button">Criar uma conta</a>
+  </p>
+</div>
+<hr>
+<h2 class="text-center">Postagens Recentes</h2>
+{{#if postagens }}
+    <div class="row mb-5">
+        {{#each postagens}}
+            <div class="col-md-4">
+                <div class="card mt-4 shadow-sm">
+                    <img src="{{img}}" alt="Card Imagem" class="card-img">
+                    <div class="card-body">
+                        <h2>{{titulo}}</h2>
+                        <br>
+                        <h4 class="card-subtitle mb-2 text-muted">{{descricao}}</h4>
+                        <br>
+                        <h4 class="card-subtitle mb-2 text-muted">Categoria: {{categoria.nome}}</h4>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <a href="/admin/postagens/edit/{{_id}}">
+                                    <button class="btn btn-primary btn-block">Editar</button>
+                                </a>
+                            </div>
+                            <div class="col-md-6">
+                                <a href="/admin/postagem/delete/{{_id}}">
+                                    <button class="btn btn-danger btn-block">Deletar</button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer float-right text-muted d-flex justify-content-between bg-transparent border-top-0">
+                        <div class="views"><i class="fa fa-calendar"></i> {{#formatDate date}}{{/formatDate}}</div>
+                    </div>
+                </div>
+            </div>
+        {{/each}}
+    </div>
+{{/if}}
