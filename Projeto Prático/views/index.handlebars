@@ -16,23 +16,14 @@
                 <div class="card mt-4 shadow-sm">
                     <img src="{{img}}" alt="Card Imagem" class="card-img">
                     <div class="card-body">
+                        <h4 class="badge badge-primary ml-auto">{{categoria.nome}}</h4>
                         <h2>{{titulo}}</h2>
                         <br>
                         <h4 class="card-subtitle mb-2 text-muted">{{descricao}}</h4>
                         <br>
-                        <h4 class="card-subtitle mb-2 text-muted">Categoria: {{categoria.nome}}</h4>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <a href="/admin/postagens/edit/{{_id}}">
-                                    <button class="btn btn-primary btn-block">Editar</button>
-                                </a>
-                            </div>
-                            <div class="col-md-6">
-                                <a href="/admin/postagem/delete/{{_id}}">
-                                    <button class="btn btn-danger btn-block">Deletar</button>
-                                </a>
-                            </div>
-                        </div>
+                         <a href="/postagem/{{slug}}">
+                            <button class="btn btn-primary btn-block">Ler Mais</button>
+                        </a>
                     </div>
                     <div class="card-footer float-right text-muted d-flex justify-content-between bg-transparent border-top-0">
                         <div class="views ml-auto"><i class="fa fa-calendar"></i> {{#formatDate date}}{{/formatDate}}</div>

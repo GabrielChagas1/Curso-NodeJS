@@ -78,6 +78,21 @@ app.get('/404', (req, res) =>{
 // Rotas
 app.use('/admin', admin);
 
+// postagem
+app.get('/postagem/:slug', (req, res) =>{
+    Postagem.findOne({slug: req.params.slug}).then((postagem) =>{
+        if(postagem){
+            res.render('postagem/index', {postagem: postagem});
+        }else{
+            req.flash('error_msg', 'Está postagem não existe');
+            res.redirect('/');
+        }
+    }).catch((err) =>{
+        req.flash('error_msg', 'Houve um erro interno');
+            res.redirect('/');
+    });
+});
+
 
 // Configurando Servidor
 const port = 8007;
