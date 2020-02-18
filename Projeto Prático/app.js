@@ -9,7 +9,9 @@ const session = require('express-session');
 const flash = require('connect-flash');
 const moment = require('moment');
 require('./models/Postagem');
+require('./models/Categoria');
 const Postagem = mongoose.model('postagens');
+const Categoria = mongoose.model('categorias');
 
 // Routes 
 const admin = require('./routes/admin');
@@ -89,9 +91,19 @@ app.get('/postagem/:slug', (req, res) =>{
         }
     }).catch((err) =>{
         req.flash('error_msg', 'Houve um erro interno');
-            res.redirect('/');
+        res.redirect('/');
     });
 });
+
+// listar todas as categorias
+app.get('/categorias', (req, res) =>{
+    Categoria.find().then((categorias) =>{
+        res.render('categorias/index', {categorias: categorias});
+    }).catch((err) =>{
+        req.flash('error_msg', 'Houve um erro interno');
+        res.redirect('/');
+    });
+})
 
 
 // Configurando Servidor
