@@ -1,0 +1,24 @@
+<h2 class="text-center mt-4">Postagens Recentes</h2>
+{{#if postagens }}
+    <div class="row mb-5">
+        {{#each postagens}}
+            <div class="col-md-4">
+                <div class="card mt-4 shadow-sm">
+                    <img src="{{img}}" alt="Card Imagem" class="card-img">
+                    <div class="card-body">
+                        <h2>{{titulo}}</h2>
+                        <br>
+                        <h4 class="card-subtitle mb-2 text-muted">{{descricao}}</h4>
+                        <br>
+                         <a href="/postagem/{{slug}}">
+                            <button class="btn btn-primary btn-block">Ler Mais</button>
+                        </a>
+                    </div>
+                    <div class="card-footer float-right text-muted d-flex justify-content-between bg-transparent border-top-0">
+                        <div class="views ml-auto"><i class="fa fa-calendar"></i> {{#formatDate date}}{{/formatDate}}</div>
+                    </div>
+                </div>
+            </div>
+        {{/each}}
+    </div>
+{{/if}}

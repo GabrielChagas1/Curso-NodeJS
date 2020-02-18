@@ -103,6 +103,26 @@ app.get('/categorias', (req, res) =>{
         req.flash('error_msg', 'Houve um erro interno');
         res.redirect('/');
     });
+});
+
+// listar todas as postagens por uma categoria
+app.get('/categorias/:slug', (req, res) =>{
+    Categoria.findOne({slug: req.params.slug}).then((categoria) =>{
+        if(categoria){
+            Postagem.findOne({categoria: categoria._id}).then((postagens) =>{
+                res.render('categorias/postagens', {categoria: categoria, postagens: postagens});
+            }).catch((err) =>{
+                req.flash('error_msg', 'Houve um erro ao listar os posts');
+                res.redirect('/');
+            });
+        }else{
+            req.flash('error_msg', 'Está categoria não existe');
+            res.redirect('/categorias');
+        }
+    }).catch((err) =>{
+        req.flash('error_msg', 'Houve um erro interno');
+        res.redirect('/');
+    })
 })
 
 
