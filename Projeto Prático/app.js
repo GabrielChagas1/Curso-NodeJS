@@ -15,6 +15,7 @@ const Categoria = mongoose.model('categorias');
 
 // Routes 
 const admin = require('./routes/admin');
+const usuarios = require('./routes/usuario');
 
 // Configurações
     // Body Parser
@@ -61,7 +62,7 @@ const admin = require('./routes/admin');
         next();
     });
 
-// Routes
+// Routes para o site
 app.get('/', (req, res) =>{
     Postagem.find().populate('categoria').sort({data: 'desc'}).then((postagens) =>{
         res.render('index', {postagens: postagens});
@@ -75,10 +76,11 @@ app.get('/404', (req, res) =>{
     res.send('erro 404');
 });
 
-
-
-// Rotas
-app.use('/admin', admin);
+// Routes para o admin
+    // routes dos usuarios
+    app.use('/usuarios', usuarios);
+    //routes do admin 
+    app.use('/admin', admin);
 
 // postagem
 app.get('/postagem/:slug', (req, res) =>{
