@@ -1,5 +1,4 @@
 <h2 class="text-center mt-4">Postagens Recentes</h2>
-{{#if postagens }}
     <div class="row mb-5">
         {{#each postagens}}
             <div class="col-md-4">
@@ -10,15 +9,18 @@
                         <br>
                         <h4 class="card-subtitle mb-2 text-muted">{{descricao}}</h4>
                         <br>
-                         <a href="/postagem/{{slug}}">
+                        <a href="/postagem/{{slug}}">
                             <button class="btn btn-primary btn-block">Ler Mais</button>
                         </a>
                     </div>
                     <div class="card-footer float-right text-muted d-flex justify-content-between bg-transparent border-top-0">
-                        <div class="views ml-auto"><i class="fa fa-calendar"></i> {{#formatDate date}}{{/formatDate}}</div>
+                        <div class="views ml-auto"><i class="fa fa-calendar"></i> {{#formatDate data}}{{/formatDate}}</div>
                     </div>
                 </div>
             </div>
         {{/each}}
     </div>
-{{/if}}
+    <div class="mt-4">
+        {{teste}}
+    </div>
+
