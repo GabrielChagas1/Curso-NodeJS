@@ -34,7 +34,7 @@ router.post('/registro', (req, res) =>{
                     }
                     newUser.senha = hash;
                     newUser.save().then(() =>{
-                        req.flash('success_error', 'Usuário salvo com sucesso!');
+                        req.flash('success_msg', 'Usuário salvo com sucesso!');
                         res.redirect('/');
                     }).catch((err) =>{
                         req.flash('error_msg', 'Houve um erro durante o salvamento do usuário');
