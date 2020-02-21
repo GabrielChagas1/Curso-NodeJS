@@ -52,6 +52,11 @@ router.post('/registro', (req, res) =>{
 });
 
 
+router.get('/login', (req, res) => {
+    res.render('usuarios/login');
+});
+
+
 // função para verificar se tem erros no campos de usuários
 function fieldsVerify(req){
     var erros = [];
