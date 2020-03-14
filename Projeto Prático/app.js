@@ -12,12 +12,27 @@ require('./models/Postagem');
 require('./models/Categoria');
 const Postagem = mongoose.model('postagens');
 const Categoria = mongoose.model('categorias');
+const passport = require('passport')
+require('./config/auth')(passport);
 
 // Routes 
 const admin = require('./routes/admin');
 const usuarios = require('./routes/usuario');
 
 // Configurações
+
+     // Sessão
+     app.use(session({
+        secret: 'cursodenode', 
+        resave: true,
+        saveUninitialized: true
+    }));
+
+    // Passport
+    app.use(passport.initialize());
+    app.use(passport.session());
+    app.use(flash());
+
     // Body Parser
     app.use(bodyParser.urlencoded({extended: true}));
     app.use(bodyParser.json());
@@ -43,13 +58,6 @@ const usuarios = require('./routes/usuario');
 
     // Public 
     app.use(express.static(path.join(__dirname, 'public')));
-
-    // Sessão
-    app.use(session({
-        secret: 'cursodenode', 
-        resave: true,
-        saveUninitialized: true
-    }));
 
     // Flash
     app.use(flash());
