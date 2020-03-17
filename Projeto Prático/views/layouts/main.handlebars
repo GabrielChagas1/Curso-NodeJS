@@ -16,6 +16,11 @@
     {{!-- corpo do site --}}
     <div class="container">
         {{!-- partial view para mensagens de successo ou erro de cadastro --}}
+        {{#if error}}
+
+        <div class="alert alert-danger">{{error}}</div>
+
+        {{/if}}
         {{>_msg}}
 
         

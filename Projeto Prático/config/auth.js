@@ -8,19 +8,22 @@ const Usuario = mongoose.model('usuarios');
 
 module.exports = function(passport){
     // lógica para verificar os dados
-    passport.use(new localStrategy({usernameField: 'email'}, (email, senha, done) =>{
+    passport.use(new localStrategy({usernameField: 'email', passwordField: 'senha'}, (email, senha, done) =>{
         Usuario.findOne({email:email}).then((usuario) =>{
-            return done(null, false, {message: 'Está conta não existe'});
+            // usuário não encontrado
+            if(!usuario){
+                return done(null, false, {message: 'Está conta não existe'});
+            }
+            // usuário encontrado
+            bcrypt.compare(senha, usuario.senha, (erro, batem) =>{
+                if(batem){
+                    return done(null, usuario);
+                }else{
+                    return done(null, false, {message: 'Senha incorreta'});
+                }
+            });
         });
 
-        // usuário encontrado
-        bcrypt.compare(senha, usuario.senha, (erro, batem) =>{
-            if(batem){
-                return done(null, user);
-            }else{
-                return done(null, false, {message: 'Senha incorreta'});
-            }
-        });
     }));
 
     // salvar dados numa sessão
@@ -29,8 +32,8 @@ module.exports = function(passport){
     });
 
     passport.deserializeUser((id, done) =>{
-        User.findById(id, (err, usuario) =>{
-            done(err, user);
+        Usuario.findById(id, (err, usuario) =>{
+            done(err, usuario);
         });
     })
 
